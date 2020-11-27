@@ -1,0 +1,42 @@
+<div class="box">
+
+<ul class="list-group">
+  <li class="list-group-item text-center"><strong> Name :  </strong> {{visitorLogsList?.visitorName}} </li>
+  <li class="list-group-item text-center"><strong> phoneNo:  </strong> {{visitorLogsList?.phoneNo}} </li>
+  <li class="list-group-item text-center"><strong> address:  </strong> {{visitorLogsList?.address}} </li>
+  <li class="list-group-item text-center"><strong> Visitor companyName:  </strong> {{visitorLogsList?.companyName}} </li>
+  <li class="list-group-item text-center"><strong> Visitor Type:  </strong> {{visitorLogsList?.visitorType?.type}} </li>
+</ul>
+</div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+         <form class="text-center"  [formGroup]="visitorLogs" (ngSubmit)="onSubmit()" *ngIf="activityStatus">
+            <div class="form-group">
+              <label for="usr">Purpose</label>
+              <input type="text" class="form-control" formControlName="purpose" required>
+            </div>
+
+            <div class="form-group">
+              <label for="cName">Whom to Meet</label>
+              <input type="text" class="form-control" formControlName="whomToMeet" required>
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="cName">activityStatus</label>
+              <input type="text" class="form-control" formControlName="activityStatus" value="in">
+            </div> -->
+
+            <button type="submit"  class="btn btn-success" [disabled]="!visitorLogs.valid">Add Logs</button>
+         </form>
+         </div>
+         </div>
+
+         <div *ngIf="!activityStatus">
+           <h1>Visitor is Already in !!</h1>
+         </div>
+
+
+
+
+

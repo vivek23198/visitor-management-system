@@ -1,0 +1,30 @@
+
+<h1>List of All Active Visitor</h1>
+
+
+<table class="content-table" id="table-style">
+  <thead class="table-primary">
+    <tr >
+      <th >Visitor Name</th>
+      <th>Purpose</th>
+      <th>Whom To Meet</th>
+      <th>Date</th>
+      <th>Date in Time</th>
+      <th>Activity Status</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let logs of getFilteredLogs() " >
+
+        <td> {{ logs?.visitor?.visitorName}} </td>
+        <td> {{ logs?.purpose }} </td>
+        <td> {{ logs?.whomToMeet }}</td>
+        <td> {{ logs?.dateInTime?.split('T')[0] }} </td>
+        <td> {{ logs?.dateInTime | date: 'HH:mm:ss'}} </td>
+        <td > <button class="btn btn-success" (click)="inActive(logs)">OUT</button> </td>
+
+
+    </tr>
+  </tbody>
+</table>

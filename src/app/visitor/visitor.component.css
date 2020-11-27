@@ -1,0 +1,34 @@
+input {
+  width: 50%;
+  align-items: center;
+  margin: auto;
+}
+
+button{
+  align-items: center;
+  align-items: center;
+}
+
+.textarea {
+  width: 50%;
+  margin-left: 180px;
+}
+
+.error{
+  color: red;
+}
+
+/* #label{
+  padding-right: 170px;
+  margin: auto;
+} */
+
+.required {
+
+  color: red;
+}
+
+.errSpan{
+  color: red;
+  font-weight: bolder;
+}

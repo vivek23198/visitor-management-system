@@ -1,0 +1,44 @@
+<div class="form-group row">
+  <label for="search" class="col-sm-2 col-form-label" style="text-align: center;"></label>
+  <div class="col-sm-6">
+    <input type="text" [(ngModel)]="searchValue"
+    class="form-control"
+    id="search"
+    placeholder="search By Visitor or Date or DateInTime or DateOutTime"
+    />
+  </div>
+</div>
+
+
+
+<table class="content-table" id="table-style">
+  <thead class="table-primary">
+    <tr >
+      <th >Visitor Name</th>
+      <th>Purpose</th>
+      <th>WhomToMeet</th>
+      <th> Date</th>
+      <th>Date In Time</th>
+      <th>Date OutTime</th>
+      <th>Activity Status</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let logs of visitorLogsList | searchLogs:searchValue" >
+
+        <td> {{ logs?.visitor?.visitorName}} </td>
+        <td> {{ logs?.purpose }} </td>
+        <td> {{ logs?.whomToMeet }}</td>
+        <!-- <td> {{logs?.dateInTime?.split('T')[0] | date: 'fullDate'}} </td> -->
+        <td> {{ logs?.dateInTime | date: 'yyyy-MM-dd' }} </td>
+        <td> {{ logs?.dateInTime | date: ' HH:mm:ss' }} </td>
+        <div *ngIf="logs?.dateOutTime !== '0000-00-00T00:00:00.000'; else elseBlock"><td>{{logs?.dateOutTime | date: 'HH:mm:ss'}}</td></div>
+        <ng-template #elseBlock> <td> {{'--'}}</td></ng-template>
+
+        <td > {{ logs?.activityStatus | uppercase }} </td>
+
+
+    </tr>
+  </tbody>
+</table>

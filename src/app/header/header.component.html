@@ -1,0 +1,28 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">Visitor Management</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li  routerLinkActive = "active"><a routerLink = "/visitor">Home</a></li>
+        <li routerLinkActive = "active"><a routerLink= "/visitor/new" *ngIf="_authService.loggedIn()">Add New Visitor</a></li>
+        <li routerLinkActive = "active"><a routerLink= "/activeVisitor" *ngIf="_authService.loggedIn()">Active Visitor</a></li>
+        <li routerLinkActive = "active"><a routerLink= "/logs" *ngIf="_authService.loggedIn()">View Logs</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive = "active"><a style="cursor: pointer;" *ngIf="!_authService.loggedIn()" routerLink = "/auth"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+        <li routerLinkActive = "active"><a style="cursor: pointer;" *ngIf="_authService.loggedIn()" routerLink = "/register">Add New Admin</a></li>
+        <li routerLinkActive = "active"><a style="cursor: pointer;" *ngIf="_authService.loggedIn()" routerLink = "/changePassword"><span class="glyphicon glyphicon-log-in"></span>Change Password</a></li>
+        <li routerLinkActive = "active"><a style="cursor: pointer;"  *ngIf="_authService.loggedIn()" (click)="_authService.logoutVisitor()"><span class="glyphicon glyphicon-log-out"></span>LogOut</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+

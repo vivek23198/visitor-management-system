@@ -1,0 +1,82 @@
+
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+      <form class="text-center" #formData= "ngForm"  (ngSubmit)="onSubmit(formData.value)">
+        <span *ngIf="errMsg !== null" class="errSpan">{{errMsg}}</span>
+        <div class="form-group">
+          <label for="usr" id="label">Name:<span class="required">*</span></label>
+          <input
+          type="text"
+          class="form-control"
+           id="usr"
+           name="visitorName"
+           required
+           ngModel
+           #visitorName ="ngModel">
+
+           <div *ngIf="visitorName.invalid && (visitorName.dirty || visitorName.touched)">
+            <div *ngIf="visitorName.errors.required" class="error">VisitorName is required</div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="companyName" id="label">Company Name:</label>
+          <input
+          type="text"
+          class="form-control"
+          id="companyName"
+          name = "companyName"
+          ngModel
+          >
+        </div>
+        <br>
+        <br>
+        <label for="phone" id="label">Enter your phone number: <span class="required">*</span></label><br>
+        <input
+        type="text"
+        id="phone"
+        name="phoneNo"
+        pattern="[1-9]{1}[0-9]{9}"
+        minlength="10"
+        required
+        ngModel
+        #phoneNo="ngModel">
+        <div *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)">
+          <div *ngIf="phoneNo.errors.required" class="error">Phone Number is required</div>
+          <!-- <div *ngIf="phoneNo.errors?.maxlength" class="error">phoneNo Length must 10 digit</div> -->
+          <div class="error" *ngIf=" phoneNo.touched && phoneNo.errors?.pattern">Phone Number must be digit from 0-9 and its length must be 10</div>
+          </div>
+        <br>
+        <br>
+        <div class="form-group">
+          <label for="address" id="label">Address: <span class="required">*</span></label>
+          <textarea
+          class="form-control textarea"
+          rows="3"
+          cols="4"
+          id="address"
+          name="address"
+          required
+          ngModel
+          #address="ngModel"></textarea>
+
+          <div *ngIf="address.invalid && (phoneNo.dirty || address.touched)">
+            <div *ngIf="address.errors.required" class="error">Address is required</div>
+
+            </div>
+        </div>
+        <br>
+
+        <label for="type">Visitor Type<span class="required"> *</span></label><br>
+        <select class="btn btn-info dropdown-toggle" name="visitorType" ngModel>
+          <option *ngFor="let vType of visitorType" [ngValue]="vType" >{{vType.type}}</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+</div>
+
+
+

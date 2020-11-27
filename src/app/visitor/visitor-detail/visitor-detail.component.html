@@ -1,0 +1,79 @@
+<h1>View Particular Visitors</h1>
+<!--
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Visitor Name</th>
+      <th>phoneNo</th>
+      <th>address</th>
+      <th>companyName</th>
+      <th>Visitor-Type</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+      <tbody>
+        <tr >
+          <td>{{ data?.visitorName}}</td>
+          <td> {{ data?.phoneNo }}</td>
+          <td> {{data?.address}} </td>
+          <td> {{ data?.companyName}} </td>
+          <td>{{ data?.visitorType.type}}</td>
+          <td> <a (click) = "onDelete(data.visitorId)">Delete</a></td>
+        </tr>
+      </tbody>
+
+
+</table> -->
+<div class="box">
+  <ul class="list-group">
+    <li class="list-group-item text-center"><strong> Name :  </strong> {{data?.visitorName}} </li>
+    <li class="list-group-item text-center"><strong> Phone No:  </strong> {{data?.phoneNo}} </li>
+    <li class="list-group-item text-center"><strong> Address:  </strong> {{data?.address}} </li>
+    <li class="list-group-item text-center" *ngIf="data?.companyName !== ''"><strong> Company Name:  </strong> {{data?.companyName}} </li>
+    <li class="list-group-item text-center" *ngIf="data?.companyName == ''"><strong> Company Name:  </strong> {{ "--"}} </li>
+    <li class="list-group-item text-center"><strong> Visitor-Type:  </strong> {{data?.visitorType?.type}} </li>
+  </ul>
+</div>
+
+
+
+<div class="text-center">
+  <button class="btn btn-danger text-center" (click)="onDelete(data.visitorId)">Delete</button>
+</div>
+
+
+
+ <h1 *ngIf="visitorLogsById?.length > 0">All Logs</h1>
+<h1 *ngIf="visitorLogsById?.length === 0">No Logs present </h1>
+<div class="container">
+
+<table class="table table-hover content-table" *ngIf="visitorLogsById?.length">
+
+
+  <thead class="thead">
+    <tr>
+
+      <th>Purpose</th>
+      <th>Whom To meet</th>
+      <th>Date-In-Time</th>
+      <th>Date-Out-Time</th>
+
+    </tr>
+  </thead>
+      <tbody>
+        <tr *ngFor= "let logs of visitorLogsById" >
+          <td>{{ logs?.purpose }}</td>
+          <td> {{ logs?.whomToMeet }}</td>
+          <td> {{ logs.dateInTime}} </td>
+          <!-- <td> {{ logs.dateOutTime}} </td> -->
+          <div *ngIf="logs?.dateOutTime !== '0000-00-00T00:00:00.000'; else elseBlock"><td>{{logs?.dateOutTime }}</td></div>
+        <ng-template #elseBlock> <td> {{'--'}}</td></ng-template>
+
+
+        </tr>
+      </tbody>
+
+
+</table>
+
+</div>

@@ -1,0 +1,43 @@
+
+input {
+  width: 60%;
+  align-items: center;
+  margin: auto;
+
+}
+
+
+h1{
+  margin: auto;
+  padding-left: 40%;
+  font-weight: bolder;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.error{
+  padding-top: 8px;
+  color: red;
+}
+
+#emailField{
+  margin-bottom: 20px;
+}
+
+#username{
+
+  line-height: 0em;
+}
+
+label{
+  line-height: 5px;
+}
+
+.required{
+  color: red;
+}
+
+span .required{
+  color: red;
+
+}
+

@@ -1,0 +1,38 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+body{
+  padding: 20px;
+}
+
+.required{
+  color: red;
+}
+
+form{
+  width: 50%;
+  margin: auto;
+  padding-top: 50px;
+}
+
+/* label {
+  width: 50%;
+  align-items: center;
+  margin: auto;
+}
+
+input {
+  width: 50%;
+  align-items: center;
+  margin: auto;
+}
+
+button{
+  align-items: center;
+  align-items: center;
+}
+
+.textarea {
+  width: 40%;
+  margin-left: 180px;
+} */
